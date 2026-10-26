@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bpfxjky31nh5f"]
+
+[ext_resource type="FontFile" uid="uid://smipb5dmdovi" path="res://NovaRound-Regular.ttf" id="1"]
+[ext_resource type="Script" uid="uid://dfkmdp8ck7440" path="res://main.gd" id="3"]
+
+[sub_resource type="Theme" id="1"]
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+
+[node name="Main" type="Node2D" unique_id=1067855876]
+script = ExtResource("3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2117035561]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("1")
+color = Color(0, 0.45341927, 0.26249602, 1)
+
+[node name="DebugLabel" type="Label" parent="." unique_id=720783267]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 1917.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 32
+text = "LYCKA TILL!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_ColorRect_gui_input"]

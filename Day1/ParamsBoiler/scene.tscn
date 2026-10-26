@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ces3j1oxf4368"]
+
+[ext_resource type="Texture2D" uid="uid://d2ol1dc7ifkt2" path="res://mirrored.png" id="1_3253y"]
+[ext_resource type="Texture2D" uid="uid://30yculjaqwrt" path="res://icon.svg" id="1_nxogm"]
+[ext_resource type="Script" uid="uid://1vonlmtqnsx5" path="res://protagonist.gd" id="2_3253y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
+
+[node name="Scene" type="Node2D" unique_id=1345722123]
+
+[node name="Mirrored" type="Sprite2D" parent="." unique_id=1276842037]
+visible = false
+texture_repeat = 2
+position = Vector2(17, -7)
+texture = ExtResource("1_3253y")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=983884945]
+modulate = Color(0.42503253, 0.31207886, 0.34428844, 1)
+repeat_size = Vector2(128, 128)
+repeat_times = 22
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=2072341327]
+texture = ExtResource("1_nxogm")
+
+[node name="Protagonist" type="CharacterBody2D" parent="." unique_id=727252941]
+script = ExtResource("2_3253y")
+
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=2022368388]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Protagonist" unique_id=1048732385]
+shape = SubResource("CircleShape2D_0hol4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Protagonist" unique_id=1544788240]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_nxogm")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=847355019]

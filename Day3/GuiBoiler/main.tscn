@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://bpfxjky31nh5f"]
+
+[ext_resource type="FontFile" uid="uid://smipb5dmdovi" path="res://NovaRound-Regular.ttf" id="1"]
+[ext_resource type="Script" uid="uid://dfkmdp8ck7440" path="res://main.gd" id="3"]
+[ext_resource type="Script" uid="uid://cknhcrbniewa6" path="res://scripts/booos.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://bj5kv38sduj5o" path="res://assets/coderowl.png" id="4_kek77"]
+[ext_resource type="Script" uid="uid://d2drbiw2xb22g" path="res://picks.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://dyndo7as8w4xi" path="res://actors/booo.tscn" id="6"]
+[ext_resource type="Script" uid="uid://i8f82f0khagn" path="res://player.gd" id="7"]
+[ext_resource type="PackedScene" path="res://actors/bullet.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://actors/pick.tscn" id="10"]
+[ext_resource type="Texture2D" uid="uid://dtds27b2smeuy" path="res://assets/Background-4.png" id="10_4c57u"]
+
+[sub_resource type="Theme" id="1"]
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+
+[sub_resource type="Animation" id="5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.035, 0.035)]
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "player_anim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.035, 0.035), Vector2(0.06, 0.06), Vector2(0.035, 0.035)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4c57u"]
+_data = {
+&"RESET": SubResource("5"),
+&"player_anim": SubResource("6")
+}
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(60, 60)
+
+[node name="Main" type="Node2D" unique_id=1882939972]
+script = ExtResource("3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1339607419]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("1")
+color = Color(0.235294, 0.545098, 0.545098, 1)
+
+[node name="DebugLabel" type="Label" parent="." unique_id=1818732031]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 1917.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 32
+text = "LYCKA TILL!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1611850688]
+root_node = NodePath("../Player/HurtSprite")
+libraries/ = SubResource("AnimationLibrary_4c57u")
+
+[node name="Player" type="Area2D" parent="." unique_id=1147530220]
+z_index = 1
+position = Vector2(0, 540)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7")
+
+[node name="HurtSprite" type="Sprite2D" parent="Player" unique_id=355945088]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("4_kek77")
+
+[node name="TheSprite" type="Sprite2D" parent="Player" unique_id=889229952]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("4_kek77")
+
+[node name="PlayerCollisionShape" type="CollisionShape2D" parent="Player" unique_id=1907532961]
+shape = SubResource("4")
+
+[node name="Picks" type="Node2D" parent="." unique_id=1963682967]
+z_index = 1
+script = ExtResource("5")
+
+[node name="Pick" parent="Picks" unique_id=1567490695 instance=ExtResource("10")]
+position = Vector2(960, 540)
+
+[node name="Timer" type="Timer" parent="Picks" unique_id=1048886175]
+wait_time = 3.0
+autostart = true
+
+[node name="Bullets" type="Node2D" parent="." unique_id=1407460280]
+z_index = 1
+
+[node name="Bullet" parent="Bullets" unique_id=1800475564 instance=ExtResource("8")]
+
+[node name="Booos" type="Node2D" parent="." unique_id=855523819]
+z_index = 1
+script = ExtResource("4")
+
+[node name="Booo" parent="Booos" unique_id=767587044 instance=ExtResource("6")]
+position = Vector2(1920, 540)
+
+[node name="Timer" type="Timer" parent="Booos" unique_id=2041860256]
+wait_time = 4.0
+autostart = true
+
+[node name="Background4" type="Sprite2D" parent="." unique_id=1504185266]
+position = Vector2(1024, 659.00006)
+scale = Vector2(1.8083335, 1.8083334)
+texture = ExtResource("10_4c57u")
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_ColorRect_gui_input"]
+[connection signal="timeout" from="Picks/Timer" to="Picks" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Booos/Booo" to="Player" method="_on_Booo_area_entered"]
+[connection signal="timeout" from="Booos/Timer" to="Booos" method="_on_timer_timeout"]
