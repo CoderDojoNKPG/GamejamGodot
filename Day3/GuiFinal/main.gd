@@ -27,6 +27,7 @@ func _process(_delta):
 			player.goto = get_global_mouse_position()
 			# player.position  = player.position.move_toward(pressed_position, delta * player_speed)
 	elif game_over and pressed:
+		$"..".start_button_restore()
 		call_deferred('queue_free')
 	elif game_over:
 		stop_spawn_timers()

@@ -17,5 +17,5 @@ func _on_button_toggled(toggled_on: bool) -> void:
 		player.player_speed *= 2
 		player.keyspeed *= 2
 	else:
-		player.player_speeda /= 2
+		player.player_speed /= 2
 		player.keyspeed /= 2

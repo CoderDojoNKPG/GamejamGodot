@@ -13,31 +13,6 @@
 
 [sub_resource type="Theme" id="1"]
 
-[sub_resource type="FontFile" id="2"]
-fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/32/0/ascent = 0.0
-cache/0/32/0/descent = 0.0
-cache/0/32/0/underline_position = 0.0
-cache/0/32/0/underline_thickness = 0.0
-cache/0/32/0/scale = 1.0
-
 [sub_resource type="Animation" id="5"]
 length = 0.001
 tracks/0/type = "value"
@@ -78,6 +53,31 @@ _data = {
 [sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(60, 60)
 
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+
 [node name="Main" type="Node2D" unique_id=1882939972]
 script = ExtResource("3")
 
@@ -89,25 +89,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("1")
 color = Color(0.235294, 0.545098, 0.545098, 1)
-
-[node name="DebugLabel" type="Label" parent="." unique_id=1818732031]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = 8.0
-offset_right = 1917.0
-offset_bottom = 235.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = SubResource("2")
-theme_override_font_sizes/font_size = 32
-text = "LYCKA TILL!
-"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1611850688]
 root_node = NodePath("../Player/HurtSprite")
@@ -162,6 +143,25 @@ autostart = true
 position = Vector2(1024, 659.00006)
 scale = Vector2(1.8083335, 1.8083334)
 texture = ExtResource("10_4c57u")
+
+[node name="DebugLabel" type="Label" parent="." unique_id=1818732031]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 1917.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 32
+text = "LYCKA TILL!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="gui_input" from="ColorRect" to="." method="_on_ColorRect_gui_input"]
 [connection signal="timeout" from="Picks/Timer" to="Picks" method="_on_timer_timeout"]
