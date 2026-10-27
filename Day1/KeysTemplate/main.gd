@@ -27,7 +27,7 @@ func _process(_delta):
 			player.goto = get_global_mouse_position()
 			# player.position  = player.position.move_toward(pressed_position, delta * player_speed)
 	elif game_over and pressed:
-		call_deferred('queue_free')
+		get_tree().reload_current_scene()
 	elif game_over:
 		stop_spawn_timers()
 
@@ -40,4 +40,4 @@ func stop_spawn_timers():
 	$Booos/Timer.stop()
 
 func summary():
-	label.text = "Game Over spelet är slut \n Klicka var som helst för att återgå till startmenyn!"
+	label.text = "Game Over spelet är slut \n Klicka var som helst för att starta om!"
